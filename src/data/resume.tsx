@@ -26,7 +26,7 @@ export const DATA = {
     "Threejs",
     "AWS",
     "CI/CD",
-    "React Native",
+    "WebSockets",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -83,8 +83,9 @@ export const DATA = {
       logoUrl: "/tappn.png",
       start: "Septmber 2025",
       end: "",
-      description:
-        "Implemented the Bitcoin discreet log contract (DLC) protocol specifications as an open source Typescript SDK. Dockerized all microservices and setup production kubernetes cluster. Architected a data lake using AWS S3 and Athena for historical backtesting of bitcoin trading strategies. Built a mobile app using react native and typescript.",
+      description: `
+        Led a comprehensive codebase refactoring initiative that improved maintainability, scalability, and development velocity across the entire platform. Integrated and optimized backend API connections, implementing efficient data fetching strategies and error handling mechanisms. Learn Working With ThirdParty Integration Tools,  Work As A React Native Developer
+        `,
     },
   ],
   education: [
