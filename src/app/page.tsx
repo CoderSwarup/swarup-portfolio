@@ -9,13 +9,13 @@ import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
 
-import { GithubContributionCalendar } from "@/components/github-calendar";
+import { GithubContributionCalendarWrapper } from "@/components/github-calendar-wrapper";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex flex-col min-h-dvh space-y-10">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
@@ -46,9 +46,11 @@ export default function Page() {
           <h2 className="text-xl font-bold">About</h2>
         </BlurFade>
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
+            <Markdown>
+              {DATA.summary}
+            </Markdown>
+          </div>
         </BlurFade>
       </section>
       <section id="work">
@@ -120,7 +122,7 @@ export default function Page() {
             <h2 className="text-xl font-bold">GitHub Contributions</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 12}>
-            <GithubContributionCalendar />
+            <GithubContributionCalendarWrapper />
           </BlurFade>
         </div>
       </section>
