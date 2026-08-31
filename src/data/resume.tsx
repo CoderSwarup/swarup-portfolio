@@ -10,7 +10,7 @@ export const DATA = {
   description: "Software Engineer. I love building things.",
   summary:
     "I have always been fascinated by the endless possibilities of the internet and the ways it can be leveraged to make our lives better. As a Full Stack MERN Developer, I specialize in building efficient and scalable web applications  I also have experience in DevOps, focusing on CI/CD pipelines, containerization with Docker, and cloud platforms like AWS.",
-  avatarUrl: "/me.png",
+  avatarUrl: "/assets/me.png",
   skills: [
     "React",
     "Next.js",
@@ -80,7 +80,7 @@ export const DATA = {
       badges: [],
       location: "Remote",
       title: "Full Stack Developer",
-      logoUrl: "/tappn.png",
+      logoUrl: "/company/tappn.png",
       start: "Septmber 2025",
       end: "",
       description: `
@@ -93,7 +93,7 @@ export const DATA = {
       school: "University of Mumbai",
       href: "https://mu.ac.in/",
       degree: "Bachelor's Degree of Computer Science (BCS)",
-      logoUrl: "/mumbaiuc.png",
+      logoUrl: "/assets/mumbaiuc.png",
       start: "2022",
       end: "2025",
     },

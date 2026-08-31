@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
-import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/common/Navbar";
+import { ThemeProvider } from "@/components/common/ThemeProviders";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 import { Pixelify_Sans, Caveat } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import UmamiAnalytics from "@/components/analytics/UmamiAnalytics";
+import { logger } from "@/utils";
 
 const fontPixelify = Pixelify_Sans({
   subsets: ["latin"],
@@ -68,6 +70,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" suppressHydrationWarning className={cn(fontPixelify.variable, fontGeistPixel.variable, fontCaveat.variable)}>
       <body
@@ -79,6 +82,8 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             {children}
             <Navbar />
+
+            <UmamiAnalytics />
           </TooltipProvider>
         </ThemeProvider>
       </body>
