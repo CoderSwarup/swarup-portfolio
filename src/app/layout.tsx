@@ -4,12 +4,27 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Pixelify_Sans, Caveat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const fontSans = FontSans({
+const fontPixelify = Pixelify_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "700"],
+  variable: "--font-pixelify",
+});
+
+const fontGeistPixel = localFont({
+  src: "../../public/fonts/geist-pixel-latin.woff2",
+  variable: "--font-geist-pixel",
+  style: "normal",
+  display: "swap",
+});
+
+const fontCaveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-caveat",
 });
 
 export const metadata: Metadata = {
@@ -54,11 +69,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn(fontPixelify.variable, fontGeistPixel.variable, fontCaveat.variable)}>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-          fontSans.variable
+          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6"
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">

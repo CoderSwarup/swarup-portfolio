@@ -15,8 +15,12 @@
 
 @theme {
   --font-sans:
-    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    var(--font-geist-pixel), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-heading:
+    var(--font-pixelify), ui-sans-serif, system-ui, sans-serif;
+  --font-accent:
+    var(--font-caveat), cursive;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -90,45 +94,49 @@
 
 @layer base {
     :root {
-      --background: 0 0% 100%;
-      --foreground: 210 11.1% 3.53%;
+      --background: 288 50% 97.3%;
+      --foreground: 280 20% 9.2%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 210 11.1% 3.53%;
+      --card: 288 33% 93.1%;
+      --card-foreground: 280 20% 9.2%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 210 11.1% 3.53%;
+      --popover: 288 50% 97.3%;
+      --popover-foreground: 280 20% 9.2%;
 
-      --primary: 0 0% 9%;
+      --primary: 280 10% 9%;
       --primary-foreground: 0 0% 98%;
 
-      --secondary: 0 0% 96.1%;
-      --secondary-foreground: 0 0% 9%;
+      --secondary: 288 20% 94.3%;
+      --secondary-foreground: 280 10% 9%;
 
-      --muted: 0 0% 96.1%;
-      --muted-foreground: 0 0% 45.1%;
+      --muted: 288 15% 88.2%;
+      --muted-foreground: 280 5% 46.7%;
 
-      --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+      --accent: 288 20% 94.3%;
+    --accent-foreground: 280 10% 9%;
 
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 89.8%;
-      --input: 0 0% 89.8%;
-      --ring: 0 0% 3.9%;
+      --border: 288 15% 88.2%;
+      --input: 288 15% 88.2%;
+      --ring: 280 10% 3.9%;
 
       --radius: 0.5rem;
+
+      --glow-blue: #3178C6;
+      --glow-pink: #F34B7D;
+      --glow-green: #22C55E;
     }
 
     .dark {
-      --background: 210 11.1% 3.53%;
+      --background: 0 0% 3.9%;
       --foreground: 0 0% 98%;
 
-      --card: 210 11.1% 3.53%;
+      --card: 0 0% 9%;
       --card-foreground: 0 0% 98%;
 
-      --popover: 210 11.1% 3.53%;
+      --popover: 0 0% 3.9%;
       --popover-foreground: 0 0% 98%;
 
       --primary: 0 0% 98%;
@@ -146,9 +154,13 @@
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 14.9%;
+      --border: 0 0% 19.6%;
       --input: 0 0% 14.9%;
       --ring: 0 0% 83.1%;
+
+      --glow-blue: #3178C6;
+      --glow-pink: #F34B7D;
+      --glow-green: #22C55E;
     }
   }
 
@@ -159,6 +171,10 @@
     body {
       @apply bg-background text-foreground;
     }
+  }
+
+  .font-accent {
+    font-family: var(--font-caveat), cursive;
   }
 
   h3 code {
