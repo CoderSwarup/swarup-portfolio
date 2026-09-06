@@ -11,6 +11,30 @@
 - Page structure: Hero → About → Work Experience → Education → Skills → GitHub
   Contributions → Projects → Hackathons → Contact
 
+## Multi-Page Migration (In Progress)
+
+Site is migrating from single-page to multi-page. Current state:
+
+- **Home** (`/`) — all sections remain on homepage (About, Work, Education,
+  Skills, GitHub, Projects, Hackathons, Contact) — not yet migrated out
+- **Blog** (`/blog`) — existing route with real blog posts
+- **Projects** (`/projects`) — dedicated route, reuses `ProjectsSection` component
+
+Content migration for the remaining sections is deferred/pending.
+
+### Header + Navigation
+
+- `src/components/common/Header.tsx` — sticky floating header, replaces old
+  bottom Dock navbar
+- `src/data/config/header.ts` — nav items, command palette config (types:
+  `NavItem`, `CommandAction`, `IconComponent`)
+- Command palette: shadcn `CommandDialog` (cmdk-based), opens on ⌘K/Ctrl+K
+- Reuses `ThemeToggleButton` from `ThemeSwitch.tsx` — do not rebuild theme logic
+- Uses existing SVG icons from `src/components/svgs/` (Github, LinkedIn) for
+  command palette actions
+- Old `Navbar.tsx` (bottom Dock) is no longer rendered in layout — kept in
+  codebase for now but not imported
+
 ## Design System — LOCKED
 
 These are **locked decisions**, not suggestions. Do not deviate without explicit
@@ -168,15 +192,21 @@ Server output is color-coded with timestamps. Client output is plain text.
 
 ```
 src/
-├── app/              # Next.js App Router (layout, page, blog routes)
+├── app/              # Next.js App Router (layout, page, blog, projects routes)
+│   ├── blog/         # Blog listing + [slug] pages
+│   ├── projects/     # Projects page
+│   ├── layout.tsx    # Root layout (Header, ThemeProvider, fonts)
+│   └── page.tsx      # Homepage (all sections)
 ├── components/
 │   ├── analytics/    # UmamiAnalytics.tsx
-│   ├── common/       # Navbar, ThemeProviders, ThemeSwitch
-│   ├── svgs/         # Icon components (see above)
-│   └── ui/           # shadcn/ui components
+│   ├── common/       # Header, ThemeProviders, ThemeSwitch, Navbar (deprecated)
+│   ├── sections/     # Extracted section components (ProjectsSection)
+│   ├── svgs/         # Icon components (Github, LinkedIn, Moon, Sun, etc.)
+│   └── ui/           # shadcn/ui components (command, dialog, button, etc.)
 ├── config/           # Centralized env var access (__CONFIG__)
 ├── constants/        # Static app constants (APPLICATION_ENV)
 ├── data/             # Resume/portfolio data
+│   └── config/       # Header nav items and command palette config
 ├── hooks/            # useUmami, useHapticFeedback, useMobile
 ├── lib/              # Utility helpers (cn, etc.)
 ├── types/            # TypeScript types (analytics, env)
@@ -191,9 +221,14 @@ public/
 
 | File                                          | Purpose                                                                                                                     |
 | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `src/app/layout.tsx`                          | Root layout, font loading, CSS variable classes on `<html>`                                                                 |
+| `src/app/layout.tsx`                          | Root layout, font loading, CSS variable classes on `<html>`, renders `<Header>`                                             |
 | `src/app/globals.css`                         | Tailwind v4 `@theme` (colors, fonts, radius, animations), `@layer base` (shadcn semantic tokens, glow vars, `.font-accent`) |
 | `src/app/page.tsx`                            | Main page — all sections, font class assignments                                                                            |
+| `src/components/common/Header.tsx`            | Sticky header with nav, avatar logo, theme toggle                                                       |
+| `src/components/common/CommandPalette.tsx`     | Generic, prop-driven command palette (reusable, decoupled from app logic)                               |
+| `src/data/config/header.ts`                   | Nav items for the visible header pill (`NavItem` type)                                                  |
+| `src/data/config/command-palette.ts`          | Default command palette groups/items config (`CommandPaletteItemConfig`, `CommandPaletteGroupConfig`)    |
+| `src/components/sections/ProjectsSection.tsx`  | Extracted projects section — used on both homepage and `/projects` route                                                     |
 | `src/config/index.ts`                         | Centralized env var access (`__CONFIG__`)                                                                                   |
 | `src/constants/application.constant.ts`       | `APPLICATION_ENV` enum                                                                                                      |
 | `src/types/analytics.ts`                      | Type-safe analytics event definitions                                                                                       |

@@ -82,45 +82,45 @@
   If we ever want to remove these styles, we need to add an explicit border
   color utility to any element that depends on these defaults.
 */
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+  @layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      border-color: var(--color-border, currentcolor);
+    }
   }
-}
 
 @layer base {
     :root {
-      --background: 0 0% 0%;
-      --foreground: 280 20% 9.2%;
+      --background: 0 0% 100%;
+      --foreground: 0 0% 9%;
 
-      --card: 288 33% 93.1%;
-      --card-foreground: 280 20% 9.2%;
+      --card: 288 33% 97%;
+      --card-foreground: 0 0% 9%;
 
-      --popover: 288 50% 97.3%;
-      --popover-foreground: 280 20% 9.2%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 0 0% 9%;
 
-      --primary: 280 10% 9%;
+      --primary: 0 0% 9%;
       --primary-foreground: 0 0% 98%;
 
       --secondary: 288 20% 94.3%;
-      --secondary-foreground: 280 10% 9%;
+      --secondary-foreground: 0 0% 9%;
 
-      --muted: 288 15% 88.2%;
-      --muted-foreground: 280 5% 46.7%;
+      --muted: 288 15% 92%;
+      --muted-foreground: 0 0% 40%;
 
       --accent: 288 20% 94.3%;
-    --accent-foreground: 280 10% 9%;
+      --accent-foreground: 0 0% 9%;
 
       --destructive: 0 84.2% 60.2%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 288 15% 88.2%;
-      --input: 288 15% 88.2%;
-      --ring: 280 10% 3.9%;
+      --border: 0 0% 90%;
+      --input: 0 0% 90%;
+      --ring: 0 0% 20%;
 
       --radius: 0.5rem;
 
@@ -130,32 +130,32 @@
     }
 
     .dark {
-      --background: 0 0% 3.9%;
+      --background: 0 0% 3%;
       --foreground: 0 0% 98%;
 
-      --card: 0 0% 9%;
+      --card: 0 0% 7%;
       --card-foreground: 0 0% 98%;
 
-      --popover: 0 0% 3.9%;
+      --popover: 0 0% 3%;
       --popover-foreground: 0 0% 98%;
 
       --primary: 0 0% 98%;
       --primary-foreground: 0 0% 9%;
 
-      --secondary: 0 0% 14.9%;
+      --secondary: 0 0% 12%;
       --secondary-foreground: 0 0% 98%;
 
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
+      --muted: 0 0% 12%;
+      --muted-foreground: 0 0% 60%;
 
-      --accent: 0 0% 14.9%;
+      --accent: 0 0% 12%;
       --accent-foreground: 0 0% 98%;
 
       --destructive: 0 62.8% 30.6%;
       --destructive-foreground: 0 0% 98%;
 
-      --border: 0 0% 19.6%;
-      --input: 0 0% 14.9%;
+      --border: 0 0% 15%;
+      --input: 0 0% 12%;
       --ring: 0 0% 83.1%;
 
       --glow-blue: #3178C6;
@@ -175,6 +175,40 @@
 
   .font-accent {
     font-family: var(--font-caveat), cursive;
+  }
+
+  /* Custom scrollbar — thin, themed, minimal glow */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  }
+  .dark html,
+  html.dark {
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 9999px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
   }
 
   .dock-shadow {

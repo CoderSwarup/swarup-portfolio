@@ -1,4 +1,4 @@
-import Navbar from "@/components/common/Navbar";
+import Header from "@/components/common/Header";
 import { ThemeProvider } from "@/components/common/ThemeProviders";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
@@ -75,13 +75,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn(fontPixelify.variable, fontGeistPixel.variable, fontCaveat.variable)}>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6"
+          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto pt-20 pb-12 sm:pt-28 sm:pb-24 px-6 overflow-y-scroll"
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
+            <Header />
             {children}
-            <Navbar />
 
             <UmamiAnalytics />
           </TooltipProvider>
